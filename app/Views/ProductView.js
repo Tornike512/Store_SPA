@@ -404,8 +404,6 @@ class ProductView {
    @returns {HTMLTableRowElement}
    */
   createProductRow(product) {
-    console.log(product);
-
     const tr = document.createElement("tr");
     tr.dataset.productId = product.ID;
 

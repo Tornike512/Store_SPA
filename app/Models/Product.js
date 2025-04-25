@@ -80,6 +80,7 @@ class ProductModel {
       }
 
       const result = await response.json();
+
       await this.fetchProductsByStoreId(storeId);
       return result;
     } catch (error) {
