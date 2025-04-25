@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Store Management System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="modal-background">
+      <div class="form-container">
+        <h2 class="form-title">Create new store</h2>
+        <form id="add-form">
+          <div class="form-group">
+            <label for="name"><span class="required">*</span>Name:</label>
+            <input type="text" id="name-input" placeholder="Enter name" />
+          </div>
+
+          <div class="form-group">
+            <label for="email"><span class="required">*</span>Email:</label>
+            <input type="email" id="email" placeholder="Enter email" />
+          </div>
+
+          <div class="form-group">
+            <label for="phone"
+              ><span class="required">*</span>Phone Number:</label
+            >
+            <input type="tel" id="phone" placeholder="Enter phone number" />
+          </div>
+
+          <div class="form-group">
+            <label for="address"><span class="required">*</span>Address:</label>
+            <input type="text" id="address" placeholder="Enter address" />
+          </div>
+
+          <div class="form-group">
+            <label for="established"
+              ><span class="required">*</span>Established:</label
+            >
+            <div class="date-input">
+              <input type="date" id="established" name="established" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="floorArea"
+              ><span class="required">*</span>Floor Area:</label
+            >
+            <input
+              type="text"
+              id="floorArea"
+              placeholder="Enter floor area (in sq m)"
+            />
+          </div>
+
+          <div class="button-group">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="button" class="btn btn-default">Cancel</button>
+          </div>
+          <footer class="form-footer"></footer>
+        </form>
+      </div>
+    </div>
+    <div class="add-product-modal-background">
+      <div class="add-product-container">
+        <div class="add-product-header">
+          <h2 class="add-product-title">Create new product</h2>
+        </div>
+
+        <form class="add-product-form">
+          <div class="add-product-form-group">
+            <label
+              class="add-product-label add-product-label-required"
+              for="add-product-name"
+              >Name</label
+            >
+            <input
+              type="text"
+              class="add-product-input"
+              id="add-product-name"
+              placeholder="Enter product name"
+            />
+          </div>
+
+          <div class="add-product-form-group">
+            <label class="add-product-label" for="add-product-price"
+              >Price</label
+            >
+            <div class="add-product-currency-input-container">
+              <input
+                type="number"
+                class="add-product-input"
+                id="add-product-price"
+                placeholder="0"
+              />
+              <span class="add-product-currency-symbol">USD</span>
+            </div>
+          </div>
+
+          <div class="add-product-form-group">
+            <label class="add-product-label">Specs </label>
+            <input
+              type="text"
+              class="add-product-input"
+              id="add-product-house-made"
+              placeholder="Specs"
+            />
+          </div>
+
+          <div class="add-product-form-group">
+            <label class="add-product-label" for="add-product-rating"
+              >Rating</label
+            >
+            <input
+              type="number"
+              class="add-product-input"
+              id="add-product-rating"
+              placeholder="Rating 1-5"
+            />
+          </div>
+
+          <div class="add-product-form-group">
+            <label class="add-product-label" for="add-product-supplier-info"
+              >Supplier info</label
+            >
+            <input
+              type="text"
+              class="add-product-input"
+              id="add-product-supplier-info"
+              placeholder="Supplier info"
+            />
+          </div>
+
+          <div class="add-product-form-group">
+            <label
+              class="add-product-label add-product-label-required"
+              for="add-product-made-in"
+              >Made in</label
+            >
+            <input
+              type="text"
+              class="add-product-input"
+              id="add-product-made-in"
+              placeholder="Enter origin country"
+            />
+          </div>
+
+          <div class="add-product-form-group">
+            <label class="add-product-label" for="add-product-production"
+              >Production company name</label
+            >
+            <input
+              type="text"
+              class="add-product-input"
+              id="add-product-production"
+              placeholder="Enter manufacturer name"
+            />
+          </div>
+
+          <div class="add-product-form-group">
+            <label class="add-product-label" for="add-product-status"
+              >Status</label
+            >
+            <select class="add-product-select" id="add-product-status">
+              <option value="" selected disabled>Select...</option>
+              <option value="OK">Ok</option>
+              <option value="STORAGE">Storage</option>
+              <option value="OUT_OF_STOCK">Out of stock</option>
+            </select>
+          </div>
+
+          <div class="add-product-action-buttons">
+            <button
+              type="submit"
+              class="add-product-button add-product-button-create"
+            >
+              Create
+            </button>
+            <button
+              type="button"
+              class="add-product-button add-product-button-cancel"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+
+        <div class="add-product-container-footer"></div>
+      </div>
+    </div>
+    <div class="remove-product-popup">
+      <div class="dialog">
+        <div class="dialog-header">
+          <span class="dialog-icon">ⓘ</span>
+          <span>Confirmation</span>
+        </div>
+        <div class="dialog-content">
+          Are you sure you want to delete this product?
+        </div>
+        <div class="dialog-buttons">
+          <button class="dialog-button primary">OK</button>
+          <button class="dialog-button">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <div class="remove-store-popup">
+      <div class="remove-store-container">
+        <div class="remove-store-header">
+          <span class="remove-store-icon">ⓘ</span>
+          <span>Confirmation</span>
+        </div>
+        <div class="remove-store-content">
+          Are you sure you want to delete this store?
+        </div>
+        <div class="remove-store-buttons">
+          <button class="remove-store-button primary">OK</button>
+          <button class="remove-store-button">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <div class="edit-product-background">
+      <div class="edit-product-container">
+        <h2 class="edit-product-header">Edit product</h2>
+        <form id="edit-product-form">
+          <div class="form-group">
+            <label class="required">Name:</label>
+            <input id="edit-name" type="text" />
+          </div>
+
+          <div class="form-group">
+            <label class="required">Price:</label>
+            <div class="currency-input">
+              <input id="edit-price" type="number" />
+              <span class="currency-label">USD</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="required">Specs:</label>
+            <textarea
+              id="edit-specs"
+              class="edit-product-textarea"
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="required">Rating:</label>
+            <input id="edit-rating" type="number" min="1" max="5" />
+          </div>
+
+          <div class="form-group">
+            <label class="required">Supplier info:</label>
+            <input id="edit-supplier-info" type="text" />
+          </div>
+
+          <div class="form-group">
+            <label class="required">Made in:</label>
+            <input id="edit-country" type="text" />
+          </div>
+
+          <div class="form-group">
+            <label class="required">Production company name:</label>
+            <input id="edit-company" type="text" />
+          </div>
+
+          <div class="form-group">
+            <label class="required">Status:</label>
+            <select id="edit-status">
+              <option value="OK" selected>Ok</option>
+              <option value="STORAGE">storage</option>
+              <option value="OUT_OF_STOCK">Out of stock</option>
+            </select>
+          </div>
+
+          <div class="edit-product-buttons">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary">Cancel</button>
+          </div>
+        </form>
+        <footer class="edit-product-footer"></footer>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <h1 class="store-list-text">Store list</h1>
+      <section class="sidebar__search-box">
+        <input type="text" class="search-input" placeholder="Search" />
+        <div class="search-wrapper">
+          <button class="cancel-button">
+            <img src="./images//cancel-search-icon.png" alt="Cancel Icon" />
+          </button>
+          <button class="search-button">
+            <img src="./images/search-icon.png" alt="Search Icon" />
+          </button>
+          <button class="retry-button">
+            <img src="./images/retry-icon.png" alt="Retry Icon" />
+          </button>
+        </div>
+        <section class="drop-wrapper">
+          <button class="dropup-button">
+            <img
+              id="dropdown-icon"
+              src="./images/dropup-icon.png"
+              alt="Drop up button"
+            />
+          </button>
+          <button class="pin-button">
+            <img src="./images/pin-icon.png" alt="Pin button" />
+          </button>
+        </section>
+      </section>
+
+      <span class="loader"></span>
+      <ul class="store-list"></ul>
+
+      <section class="actions-sidebar">
+        <button class="sidebar-create-button">
+          <img src="./images/white-plus-icon.png" alt="White plus icon" />
+          Create
+        </button>
+      </section>
+    </aside>
+
+    <div class="store-not-found">
+      <header class="not-found-header">
+        <p>Store is not selected</p>
+      </header>
+      <figure class="store-not-found-background">
+        <img src="./images/store-icon.png" alt="Store icon" />
+        <div class="store-not-found-wrapper">
+          <figcaption>The store is not selected</figcaption>
+          <figcaption>Please select the store to proceed</figcaption>
+        </div>
+      </figure>
+    </div>
+    <div class="wrong-url">
+      <header class="wrong-url-header">
+        <p>The store you were looking for doesn't exist</p>
+      </header>
+      <figure class="wrong-url-background">
+        <img src="./images/store-not-found-icon.png" alt="Store icon" />
+        <div class="wrong-url-wrapper">
+          <figcaption>The store doesn't exist</figcaption>
+          <figcaption>Please select the store to proceed</figcaption>
+        </div>
+      </figure>
+    </div>
+
+    <main class="main-content">
+      <h2 class="store-details-text">Store Details</h2>
+      <section class="store-details">
+        <section class="dropdown-button-wrapper">
+          <button class="dropup-button">
+            <img src="./images/dropup-icon.png" alt="Drop up button" />
+          </button>
+          <button class="pin-button">
+            <img src="./images/pin-icon.png" alt="Pin button" />
+          </button>
+        </section>
+      </section>
+
+      <section class="stats-container">
+        <span class="stat-value"></span>
+        <section class="stats-wrapper">
+          <button id="ok" class="stat-box stat-ok">
+            <span><img src="./images/tick-icon.png" alt="Tick icon" /></span>
+            <span class="stat-label">OK</span>
+          </button>
+          <button id="warning" class="stat-box stat-warning">
+            <span
+              ><img src="./images/warning-icon.png" alt="Warning icon"
+            /></span>
+            <span class="stat-label">Storage</span>
+          </button>
+          <button id="error" class="stat-box stat-alert">
+            <span><img src="./images/error-icon.png" alt="Error icon" /></span>
+            <span class="stat-label">Out of stock</span>
+          </button>
+        </section>
+      </section>
+
+      <section class="products-section">
+        <div class="products-search-wrapper">
+          <h3>Products</h3>
+          <section class="products__search-box">
+            <input
+              type="text"
+              class="products-search-input"
+              placeholder="Enter value to search"
+            />
+            <div class="search-wrapper">
+              <button class="cancel-button">
+                <img src="./images//cancel-search-icon.png" alt="Cancel Icon" />
+              </button>
+              <button class="product-search-button">
+                <img src="./images/search-icon.png" alt="Search Icon" />
+              </button>
+            </div>
+          </section>
+        </div>
+        <table class="products-table">
+          <thead>
+            <tr>
+              <th id="name">
+                <img
+                  src="./images/descending-sort.png"
+                  alt="Descending sort"
+                  id="descending-sort"
+                /><span>Name</span>
+              </th>
+              <th id="price">
+                <img
+                  src="./images/descending-sort.png"
+                  alt="Descending sort"
+                /><span>Price</span>
+              </th>
+              <th id="specs">
+                <img
+                  src="./images/descending-sort.png"
+                  alt="Descending sort"
+                /><span>Specs</span>
+              </th>
+              <th id="supplier-info">
+                <img
+                  src="./images/descending-sort.png"
+                  alt="Descending sort"
+                /><span>Supplier Info</span>
+              </th>
+              <th id="country">
+                <img
+                  src="./images/descending-sort.png"
+                  alt="Descending sort"
+                /><span>Country of origin</span>
+              </th>
+              <th id="company">
+                <img
+                  src="./images/descending-sort.png"
+                  alt="Descending sort"
+                /><span>Prod. company</span>
+              </th>
+              <th id="rating">
+                <img
+                  src="./images/descending-sort.png"
+                  alt="Descending sort"
+                /><span>Rating</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="listed-items"></tbody>
+        </table>
+        <span class="listed-items-loader"></span>
+      </section>
+
+      <footer class="actions-main">
+        <button class="actions-main-add-button">
+          <img src="./images/white-plus-icon.png" alt="White plus icon" />
+          Create
+        </button>
+        <button class="delete-button">
+          <img src="./images/red-trash-icon.png" alt="Red trash icon" />
+          <span>Delete</span>
+        </button>
+      </footer>
+    </main>
+    <script src="app/models/Store.js"></script>
+    <script src="app/models/Product.js"></script>
+    <script src="app/views/StoreView.js"></script>
+    <script src="app/views/ProductView.js"></script>
+    <script src="app/controllers/StoreController.js"></script>
+    <script src="app/controllers/ProductController.js"></script>
+    <script src="app/controllers/AppController.js"></script>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
