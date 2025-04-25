@@ -63,7 +63,7 @@ class ProductModel {
   async createProduct(storeId, productData) {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/products/${storeId}`,
+        `http://localhost:5000/api/product/${storeId}`,
         {
           method: "POST",
           headers: {
