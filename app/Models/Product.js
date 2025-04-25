@@ -99,7 +99,7 @@ class ProductModel {
   async updateProduct(productId, productData) {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/products/${productId}`,
+        `http://localhost:5000/api/product/${productId}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -130,7 +130,7 @@ class ProductModel {
   async deleteProduct(productId) {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/products/${productId}`,
+        `http://localhost:5000/api/product/${productId}`,
         {
           method: "DELETE",
           headers: {
